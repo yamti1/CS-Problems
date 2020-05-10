@@ -4,23 +4,21 @@
 #
 # Bonus: Can you do this in one pass?
 
-from typing import List
-
 
 # Sort the list.
 # Then, have a pointer at the first item, and a pointer at the last.
 # If the some of the two values is too big, decrement the big one.
 # If the sum is too small, increment the small one.
 # If the values are equal there are no matching values.
-def sort_and_optimize(l: List[float], s: float):
-    l.sort()
+def sort_and_optimize(array, target_sum):
+    array.sort()
 
     small, big = 0, -1
-    while (current := l[small] + l[big]) != s:
-        if l[big] == l[small]:
+    while (current_sum := array[small] + array[big]) != target_sum:
+        if array[big] == array[small]:
             return False
 
-        if current > s:
+        if current_sum > target_sum:
             big -= 1
         else:
             small += 1
@@ -29,9 +27,9 @@ def sort_and_optimize(l: List[float], s: float):
 
 
 def main():
-    l = [2, 8, 6, 8, -5, 6, 6, 4]
-    s = 12
-    print(sort_and_optimize(l, s))
+    array = [2, 8, 6, 8, -5, 6, 6, 4]
+    target_sum = 12
+    print(sort_and_optimize(array, target_sum))
 
 
 if __name__ == '__main__':
